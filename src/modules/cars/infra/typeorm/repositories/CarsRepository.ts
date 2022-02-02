@@ -32,9 +32,13 @@ class CarsRepository implements ICarsRepository {
     });
 
     await this.repository.save(car);
+
+    return car;
   }
-  findByLicensePlate(license_plate: string): Promise<Car> {
-    throw new Error("Method not implemented.");
+  async findByLicensePlate(license_plate: string): Promise<Car> {
+    const car = await this.repository.findOne({ license_plate });
+
+    return car;
   }
 }
 
